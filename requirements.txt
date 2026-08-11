@@ -1,0 +1,13 @@
+streamlit
+langchain
+langchain-community
+langchain-groq
+langchain-huggingface
+sentence-transformers
+chromadb
+langchain-chroma
+tiktoken
+pypdf
+python-dotenv
+google-generativeai
+rank-bm25

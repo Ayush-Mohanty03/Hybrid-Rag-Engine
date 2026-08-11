@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: rag_fastapi_service
+    command: uvicorn api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./raw_documents:/app/raw_documents
+      - ./chroma_db:/app/chroma_db
+    restart: unless-stopped
+
+  dashboard:
+    build: .
+    container_name: rag_streamlit_dashboard
+    command: streamlit run app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./raw_documents:/app/raw_documents
+      - ./chroma_db:/app/chroma_db
+    depends_on:
+      - api
+    restart: unless-stopped

@@ -1,0 +1,58 @@
+# Environments & Virtual Envs
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Local Vector Stores & Data Storage
+chroma_db/
+chroma_db_*/
+*_db/
+raw_documents/*
+!raw_documents/.gitkeep
+
+# Jupyter Checkpoints
+.ipynb_checkpoints/
+
+# OS Generated Junk
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Temporary Directories & Scratch Files
+New folder/
+scratch/
+.gemini/
