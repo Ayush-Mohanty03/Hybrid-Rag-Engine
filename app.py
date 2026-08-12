@@ -3,7 +3,6 @@ import os
 import tempfile
 import shutil
 import re
-import json
 import numpy as np
 from html.parser import HTMLParser
 from dotenv import load_dotenv
@@ -28,7 +27,6 @@ from langchain_classic.retrievers import EnsembleRetriever, ContextualCompressio
 from langchain_classic.retrievers.document_compressors import CrossEncoderReranker
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 from langchain_core.documents import Document
-from eval_engine import run_benchmark_suite, RAGEvaluator
 
 # Raw document storage directory
 RAW_DOCS_DIR = os.path.join(os.getcwd(), "raw_documents")
@@ -76,7 +74,7 @@ def get_embeddings():
 def get_cross_encoder():
     return HuggingFaceCrossEncoder(model_name="ms-marco-MiniLM-L-12-v2")
 
-# --- Phase 3: Generation, Verification & Confidence Helpers ---
+# --- Grounded Generation & Citation Verification Helpers ---
 
 def format_numbered_context(source_documents):
     formatted_blocks = []
@@ -251,7 +249,7 @@ def load_all_documents():
 def chunk_documents(documents, strategy, chunk_size, chunk_overlap):
     chunks = []
     
-    if strategy == "Fixed-Size Chunks (Baseline)":
+    if strategy in ["Fixed-Size Chunks", "Fixed-Size Chunks (Baseline)"]:
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
         raw_chunks = text_splitter.split_documents(documents)
         for i, rc in enumerate(raw_chunks):
@@ -390,7 +388,7 @@ def deduplicate_chunks(chunks, vector_store, embeddings):
             
     return unique_chunks
 
-# Unified Ingestion Pipeline
+# Document Ingestion Pipeline
 def process_documents(chunk_size, chunk_overlap, strategy):
     documents = load_all_documents()
     if not documents:
@@ -470,7 +468,7 @@ with st.sidebar:
     
     strategy = st.selectbox(
         "Chunking Strategy",
-        ["Fixed-Size Chunks (Baseline)", "Header-Aware Splitting", "Semantic Topic Splitting"]
+        ["Fixed-Size Chunks", "Header-Aware Splitting", "Semantic Topic Splitting"]
     )
     
     st.header("Comparison Mode")
@@ -519,89 +517,6 @@ if reindex_button:
     if result:
         st.session_state.vector_store, st.session_state.bm25_retriever = result
         st.success("Documents re-indexed successfully!")
-
-# --- Phase 4: Evaluation & Benchmark Suite UI ---
-with st.expander("📊 Benchmark & Evaluation Suite (Phase 4)", expanded=False):
-    st.markdown("Run automated evaluation metrics (**Answer Correctness**, **Faithfulness**, **Retrieval Relevance**, **Citation Accuracy**) over the 50+ Golden Q&A Dataset across your document corpus.")
-    
-    eval_btn = st.button("Run 50+ Benchmark Evaluation Suite")
-    
-    if eval_btn:
-        if not os.environ.get("GROQ_API_KEY"):
-            st.error("Please set GROQ_API_KEY in your .env file to run LLM-as-judge benchmarks.")
-        elif st.session_state.vector_store is None:
-            st.warning("Please upload and process documents first before running evaluation.")
-        else:
-            golden_path = os.path.join(os.getcwd(), "golden_dataset.json")
-            if not os.path.exists(golden_path):
-                st.error("golden_dataset.json not found.")
-            else:
-                with open(golden_path, "r", encoding="utf-8") as f:
-                    dataset = json.load(f)
-                    
-                eval_llm = ChatGroq(model_name="llama-3.1-8b-instant", temperature=0)
-                
-                def benchmark_pipeline_runner(question):
-                    initial_k = 20
-                    dense_ret = st.session_state.vector_store.as_retriever(search_kwargs={"k": initial_k})
-                    if st.session_state.bm25_retriever is not None:
-                        st.session_state.bm25_retriever.k = initial_k
-                        base_ret = EnsembleRetriever(
-                            retrievers=[st.session_state.bm25_retriever, dense_ret],
-                            weights=[0.3, 0.7]
-                        )
-                    else:
-                        base_ret = dense_ret
-                        
-                    cross_enc = get_cross_encoder()
-                    comp = CrossEncoderReranker(model=cross_enc, top_n=top_k)
-                    ret = ContextualCompressionRetriever(base_compressor=comp, base_retriever=base_ret)
-                    
-                    source_docs = ret.invoke(question)
-                    formatted_ctx = format_numbered_context(source_docs)
-                    
-                    sys_prompt = (
-                        "You are a strict, factual assistant for question-answering tasks.\n"
-                        "Use ONLY the following numbered context blocks to answer the user's question.\n"
-                        "Rules:\n"
-                        "1. Every factual claim MUST end with a bracketed citation pointing to the exact context block number(s), e.g. [1].\n"
-                        "2. Do NOT use outside knowledge.\n"
-                        "3. If context lacks details, state: 'The provided context does not contain enough information'.\n\n"
-                        "Context:\n{context}"
-                    )
-                    pt = ChatPromptTemplate.from_messages([("system", sys_prompt), ("human", "{input}")])
-                    msgs = pt.format_messages(context=formatted_ctx, input=question)
-                    raw_res = eval_llm.invoke(msgs)
-                    ans = raw_res.content if hasattr(raw_res, 'content') else str(raw_res)
-                    ver = verify_citations(ans, source_docs, eval_llm)
-                    
-                    return {
-                        "answer": ans,
-                        "source_documents": source_docs,
-                        "verifications": ver
-                    }
-                    
-                progress_bar = st.progress(0.0)
-                status_text = st.empty()
-                
-                def update_progress(pct, msg):
-                    progress_bar.progress(pct)
-                    status_text.text(msg)
-                    
-                eval_results = run_benchmark_suite(dataset, benchmark_pipeline_runner, eval_llm, update_progress)
-                status_text.success("Evaluation Suite Completed!")
-                
-                summary = eval_results["summary"]
-                st.markdown("### 📈 Summary Metrics")
-                mcol1, mcol2, mcol3, mcol4, mcol5 = st.columns(5)
-                mcol1.metric("Correctness", f"{int(summary['mean_correctness']*100)}%")
-                mcol2.metric("Faithfulness", f"{int(summary['mean_faithfulness']*100)}%")
-                mcol3.metric("Retrieval Rel.", f"{int(summary['mean_retrieval_relevance']*100)}%")
-                mcol4.metric("Citation Acc.", f"{int(summary['mean_citation_accuracy']*100)}%")
-                mcol5.metric("Avg Latency", f"{summary['mean_latency_seconds']}s")
-                
-                st.markdown("### 📂 Category-wise Performance")
-                st.json(eval_results["category_breakdown"])
 
 # Chat Interface
 for message in st.session_state.messages:
