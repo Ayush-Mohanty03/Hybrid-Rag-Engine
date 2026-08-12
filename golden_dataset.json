@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "question": "What is the primary Vision of LIC?",
+    "golden_answer": "A trans-nationally competitive financial conglomerate of significance to societies and Pride of India.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "VISION OF LIC"
+  },
+  {
+    "id": 2,
+    "question": "What is the Mission of LIC?",
+    "golden_answer": "Ensure and enhance the quality of life of people through financial security by providing products and services of aspired attributes with competitive returns, and by rendering resources for economic development.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "MISSION OF LIC"
+  },
+  {
+    "id": 3,
+    "question": "What is LIC's objective regarding rural areas and backward classes?",
+    "golden_answer": "Spread Life Insurance widely and in particular to the rural areas and to the socially and economically backward classes with a view to reaching all insurable persons in the country and providing them adequate financial cover against death at a reasonable cost.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "OBJECTIVES OF LIC"
+  },
+  {
+    "id": 4,
+    "question": "What is LIC's objective regarding people's savings?",
+    "golden_answer": "Maximize mobilization of people's savings by making insurance-linked savings adequately attractive.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "OBJECTIVES OF LIC"
+  },
+  {
+    "id": 5,
+    "question": "What primary obligation must LIC bear in mind when investing funds?",
+    "golden_answer": "The primary obligation to its policyholders, whose money it holds in trust, without losing sight of the interest of the community as a whole.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "OBJECTIVES OF LIC"
+  },
+  {
+    "id": 6,
+    "question": "Who was the friend of Gajaraj the elephant?",
+    "golden_answer": "Buntee, a dog.",
+    "category": "straightforward",
+    "target_file": "fepr102.pdf",
+    "target_section": "General Context"
+  },
+  {
+    "id": 7,
+    "question": "Where did Gajaraj live?",
+    "golden_answer": "Gajaraj lived in the best booth of the royal stables.",
+    "category": "straightforward",
+    "target_file": "fepr102.pdf",
+    "target_section": "General Context"
+  },
+  {
+    "id": 8,
+    "question": "What is the definition of Corporation under LIC Code of Conduct?",
+    "golden_answer": "Corporation shall mean the Life Insurance Corporation of India.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "DEFINITIONS AND INTERPRETATIONS"
+  },
+  {
+    "id": 9,
+    "question": "What is the definition of Director under Section 4 of LIC Act 1956?",
+    "golden_answer": "Director shall mean a director appointed or nominated or deemed as such under Section 4 of Life Insurance Corporation of India Act, 1956.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "DEFINITIONS AND INTERPRETATIONS"
+  },
+  {
+    "id": 10,
+    "question": "Who is included under Senior Management in LIC?",
+    "golden_answer": "Officers/personnel of LIC of India who are members of its core management team excluding board of directors, comprising one level below Chief Executive Officer/Managing Director/Whole Time Directors.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "DEFINITIONS AND INTERPRETATIONS"
+  },
+  {
+    "id": 11,
+    "question": "By when must annual compliance with the Code of Conduct be affirmed?",
+    "golden_answer": "Within 30 days of close of every financial year (by 30th April each year).",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "APPLICABILITY"
+  },
+  {
+    "id": 12,
+    "question": "To whom must Whole-Time Directors submit their annual compliance report?",
+    "golden_answer": "To the Company Secretary and Executive Director (Personnel).",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "EXPECTED BEHAVIOUR"
+  },
+  {
+    "id": 13,
+    "question": "What is LIC's policy regarding gifts and donations?",
+    "golden_answer": "Directors and Senior Management shall neither receive nor offer or make gifts, donations or comparable benefits intended to obtain undue favors, except gifts of nominal value customarily given.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "CONTRIBUTION TO POLITICAL PARTIES OR GIFTS AND DONATIONS"
+  },
+  {
+    "id": 14,
+    "question": "Can LIC funds be used to support political parties?",
+    "golden_answer": "Prior approval of the Board of Directors of the Corporation is compulsory for use of corporate funds, credit, property or services to support any political party.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "CONTRIBUTION TO POLITICAL PARTIES OR GIFTS AND DONATIONS"
+  },
+  {
+    "id": 15,
+    "question": "What rules govern Whole-Time Directors and Senior Management regarding discipline?",
+    "golden_answer": "The Life Insurance Corporation of India (Staff) Rules, 1960 as amended from time to time.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "INTRODUCTION"
+  },
+  {
+    "id": 16,
+    "question": "What is the penalty rule if ethical standards in applicable laws are lower than LIC Code?",
+    "golden_answer": "If applicable laws and regulations are below that of the Code, then the standards of the Code shall prevail.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "COMPLIANCE TO LAWS AND REGULATIONS"
+  },
+  {
+    "id": 17,
+    "question": "Who deals with breach of Code by Whole-Time Directors?",
+    "golden_answer": "Breach by Directors is dealt with by the Board of Directors of the Corporation.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "CONSEQUENCES OF NON- COMPLIANCE OF THIS CODE"
+  },
+  {
+    "id": 18,
+    "question": "Who deals with breach of Code by Senior Management?",
+    "golden_answer": "Breach by Senior Management is dealt with by the Chief Executive in accordance with Staff Rules.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "CONSEQUENCES OF NON- COMPLIANCE OF THIS CODE"
+  },
+  {
+    "id": 19,
+    "question": "Are Independent Directors subject to additional requirements?",
+    "golden_answer": "Yes, Independent Directors must adhere to the Code of Conduct in line with Schedule-IV of the Companies Act (Appendix-IV).",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "ADDITIONAL REQUIREMENT FOR INDEPENDENT DIRECTORS"
+  },
+  {
+    "id": 20,
+    "question": "What is the purpose of the LIC Code of Conduct?",
+    "golden_answer": "To enhance the ethical and transparent process in managing the affairs of the Corporation and sustain trust reposed in Management by stakeholders.",
+    "category": "straightforward",
+    "target_file": "lic.pdf",
+    "target_section": "INTRODUCTION"
+  },
+  {
+    "id": 21,
+    "question": "How do the duties of Independent Directors (Appendix-IV) align with LIC's core Mission?",
+    "golden_answer": "Independent Directors must protect the legitimate interests of the Corporation, shareholders, and employees, while LIC's Mission focuses on providing financial security, products with competitive returns, and resources for economic development.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "DUTIES OF INDEPENDENT DIRECTORS"
+  },
+  {
+    "id": 22,
+    "question": "What are the rules regarding conflicts of interest when dealing with suppliers versus relatives?",
+    "golden_answer": "Directors must avoid dealings with contractors/suppliers that compromise impartial decisions, and must avoid conducting business on behalf of LIC with relatives or firms where they hold >2% shares without prior Board approval.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "EXPECTED BEHAVIOUR"
+  },
+  {
+    "id": 23,
+    "question": "Compare the reporting channels for annual compliance versus reporting unethical behavior.",
+    "golden_answer": "Annual compliance is submitted to the Board/Company Secretary/ED (Personnel), while unethical behavior/fraud concerns are reported through the vigil mechanism under Independent Directors' duties.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "APPLICABILITY"
+  },
+  {
+    "id": 24,
+    "question": "How does LIC's objective on policyholder trust relate to its property and personal gain rules?",
+    "golden_answer": "LIC holds policyholder money in trust as its primary obligation, which aligns with expected behavior prohibiting Directors from exploiting corporate property or information for personal gain.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "EXPECTED BEHAVIOUR"
+  },
+  {
+    "id": 25,
+    "question": "What happens if a Director violates both the Companies Act relative disclosure rules and the LIC Staff Rules?",
+    "golden_answer": "Breach by Directors is handled by the Board of Directors, while Staff Rules apply in addition to the Code for Whole-time Directors and Senior Management.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "CONSEQUENCES OF NON- COMPLIANCE OF THIS CODE"
+  },
+  {
+    "id": 26,
+    "question": "What is the relationship between the mahout, Gajaraj, and Buntee in the story?",
+    "golden_answer": "Gajaraj the elephant and Buntee the dog were close friends; when Buntee fell ill, Gajaraj stopped eating, leading the mahout to notice Gajaraj was sad.",
+    "category": "multi-hop",
+    "target_file": "fepr102.pdf",
+    "target_section": "General Context"
+  },
+  {
+    "id": 27,
+    "question": "How do public representation rules interact with unpublished price sensitive information?",
+    "golden_answer": "Only specifically authorized Directors and employees may represent LIC publicly, and they are restricted from disclosing unpublished Price Sensitive Information.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "PUBLIC REPRESENTATION"
+  },
+  {
+    "id": 28,
+    "question": "What permissions are required for a Senior Management member to take up outside directorships?",
+    "golden_answer": "Senior Management must obtain prior approval of the Chief Executive for accepting Directorship of any other Company or partnership of a firm.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "OTHER DIRECTORSHIPS"
+  },
+  {
+    "id": 29,
+    "question": "What is the difference in handling Code breaches between Whole-time Directors and Senior Management?",
+    "golden_answer": "Breaches by Directors are dealt with by the Board of Directors, whereas breaches by Senior Management are dealt with by the Chief Executive in accordance with Staff Rules.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "CONSEQUENCES OF NON- COMPLIANCE OF THIS CODE"
+  },
+  {
+    "id": 30,
+    "question": "How does LIC define a relative under the Companies Act 2013 section 2(77)?",
+    "golden_answer": "Relative includes members of a Hindu Undivided Family, husband and wife, father (step-father), mother (step-mother), son (step-son), son's wife, daughter, daughter's husband, brother (step-brother), and sister (step-sister).",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "EXTRACT OF SECTION 2(77) OF THE COMPANIES ACT"
+  },
+  {
+    "id": 31,
+    "question": "What steps must an Independent Director take regarding Board meetings and committee participation?",
+    "golden_answer": "Strive to attend all Board and committee meetings, participate constructively as chairperson or member, and ensure concerns about running the Corporation are addressed and recorded in minutes.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "DUTIES OF INDEPENDENT DIRECTORS"
+  },
+  {
+    "id": 32,
+    "question": "Which regulation under SEBI LODR requires annual compliance reporting for LIC?",
+    "golden_answer": "Regulation 26 (3) of SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "ANNUAL COMPLIANCE REPORT"
+  },
+  {
+    "id": 33,
+    "question": "How does the protection of physical assets differ from protection of confidential information?",
+    "golden_answer": "Physical assets (equipment, facilities) must be employed for duly authorized business, while confidential information (trade secrets, customer info) must be kept privileged and disclosed only when authorized or required by law.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "PROTECTION OF ASSETS"
+  },
+  {
+    "id": 34,
+    "question": "What is the procedure for amending the LIC Code of Conduct?",
+    "golden_answer": "The Code can be amended or modified by the Board of Directors of the Corporation from time to time, and all Directors and Senior Management must be duly informed.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "AMENDMENTS TO THE CODE"
+  },
+  {
+    "id": 35,
+    "question": "Who approves waivers of the provisions of the LIC Code of Conduct?",
+    "golden_answer": "No waiver of any provision of the Code shall be given unless approved by the Board of Directors of the Corporation.",
+    "category": "multi-hop",
+    "target_file": "lic.pdf",
+    "target_section": "APPLICABILITY"
+  },
+  {
+    "id": 36,
+    "question": "What is LIC's official policy on cryptocurrency investments and Bitcoin trading?",
+    "golden_answer": "The provided context does not contain information about cryptocurrency investments or Bitcoin trading.",
+    "category": "unanswerable",
+    "target_file": "lic.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 37,
+    "question": "What are the exact salary packages and bonuses for Senior Managers in 2026?",
+    "golden_answer": "The provided context does not contain salary packages or bonus figures.",
+    "category": "unanswerable",
+    "target_file": "lic.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 38,
+    "question": "What is the capital requirement for starting a private insurance subsidiary in foreign countries?",
+    "golden_answer": "The provided context does not mention capital requirements for foreign subsidiaries.",
+    "category": "unanswerable",
+    "target_file": "lic.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 39,
+    "question": "What color was the mahout's uniform in the story of Gajaraj?",
+    "golden_answer": "The provided context does not state the color of the mahout's uniform.",
+    "category": "unanswerable",
+    "target_file": "fepr102.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 40,
+    "question": "How many total employees worked at LIC in July 2021?",
+    "golden_answer": "The provided context does not mention the total employee count in July 2021.",
+    "category": "unanswerable",
+    "target_file": "lic.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 41,
+    "question": "What is the penalty in Indian Rupees for violating insider trading guidelines?",
+    "golden_answer": "The provided context does not mention specific monetary penalties in Rupees.",
+    "category": "unanswerable",
+    "target_file": "lic.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 42,
+    "question": "What is LIC's policy regarding remote working and work-from-home allowances?",
+    "golden_answer": "The provided context does not contain information about remote working or work-from-home allowances.",
+    "category": "unanswerable",
+    "target_file": "lic.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 43,
+    "question": "What specific software or database version does LIC use for internal record management?",
+    "golden_answer": "The provided context does not specify software or database versions.",
+    "category": "unanswerable",
+    "target_file": "lic.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 44,
+    "question": "What was the name of the king who owned Gajaraj the elephant?",
+    "golden_answer": "The provided context does not mention the name of the king.",
+    "category": "unanswerable",
+    "target_file": "fepr102.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 45,
+    "question": "What is the interest rate offered on LIC life insurance policy loans in 2026?",
+    "golden_answer": "The provided context does not mention specific interest rates for policy loans.",
+    "category": "unanswerable",
+    "target_file": "lic.pdf",
+    "target_section": "None"
+  },
+  {
+    "id": 46,
+    "question": "What are the rules?",
+    "golden_answer": "The document outlines the Code of Conduct for Directors and Senior Management, covering expected behaviour, conflict of interest, confidentiality, asset protection, and compliance with laws.",
+    "category": "ambiguous",
+    "target_file": "lic.pdf",
+    "target_section": "EXPECTED BEHAVIOUR"
+  },
+  {
+    "id": 47,
+    "question": "Tell me about compliance.",
+    "golden_answer": "Compliance requires Directors and Senior Management to adhere to laws, affirm annual compliance within 30 days of the financial year end, and follow SEBI LODR Regulations.",
+    "category": "ambiguous",
+    "target_file": "lic.pdf",
+    "target_section": "APPLICABILITY"
+  },
+  {
+    "id": 48,
+    "question": "What is expected from management?",
+    "golden_answer": "Management is expected to act honestly, ethically, with due care, avoid conflicts of interest, protect assets, and fulfill fiduciary obligations to policyholders and shareholders.",
+    "category": "ambiguous",
+    "target_file": "lic.pdf",
+    "target_section": "EXPECTED BEHAVIOUR"
+  },
+  {
+    "id": 49,
+    "question": "Who is a relative?",
+    "golden_answer": "A relative is defined under Section 2(77) of the Companies Act 2013 and includes spouse, parents, children, siblings, and step-relatives.",
+    "category": "ambiguous",
+    "target_file": "lic.pdf",
+    "target_section": "DEFINITIONS AND INTERPRETATIONS"
+  },
+  {
+    "id": 50,
+    "question": "What are the duties?",
+    "golden_answer": "Duties include independent oversight, attending Board meetings, reporting unethical behavior, protecting corporate assets, and complying with the Code of Conduct.",
+    "category": "ambiguous",
+    "target_file": "lic.pdf",
+    "target_section": "DUTIES OF INDEPENDENT DIRECTORS"
+  }
+]
