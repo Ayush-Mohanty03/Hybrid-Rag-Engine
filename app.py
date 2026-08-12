@@ -3,6 +3,7 @@ import os
 import tempfile
 import shutil
 import re
+import json
 import numpy as np
 from html.parser import HTMLParser
 from dotenv import load_dotenv
@@ -27,6 +28,7 @@ from langchain_classic.retrievers import EnsembleRetriever, ContextualCompressio
 from langchain_classic.retrievers.document_compressors import CrossEncoderReranker
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 from langchain_core.documents import Document
+from eval_engine import run_benchmark_suite, RAGEvaluator
 
 # Raw document storage directory
 RAW_DOCS_DIR = os.path.join(os.getcwd(), "raw_documents")
@@ -74,7 +76,7 @@ def get_embeddings():
 def get_cross_encoder():
     return HuggingFaceCrossEncoder(model_name="ms-marco-MiniLM-L-12-v2")
 
-# --- Grounded Generation & Citation Verification Helpers ---
+
 
 def format_numbered_context(source_documents):
     formatted_blocks = []
@@ -249,7 +251,7 @@ def load_all_documents():
 def chunk_documents(documents, strategy, chunk_size, chunk_overlap):
     chunks = []
     
-    if strategy in ["Fixed-Size Chunks", "Fixed-Size Chunks (Baseline)"]:
+    if strategy == "Fixed-Size Chunks (Baseline)":
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
         raw_chunks = text_splitter.split_documents(documents)
         for i, rc in enumerate(raw_chunks):
@@ -388,7 +390,7 @@ def deduplicate_chunks(chunks, vector_store, embeddings):
             
     return unique_chunks
 
-# Document Ingestion Pipeline
+# Unified Ingestion Pipeline
 def process_documents(chunk_size, chunk_overlap, strategy):
     documents = load_all_documents()
     if not documents:
@@ -468,7 +470,7 @@ with st.sidebar:
     
     strategy = st.selectbox(
         "Chunking Strategy",
-        ["Fixed-Size Chunks", "Header-Aware Splitting", "Semantic Topic Splitting"]
+        ["Fixed-Size Chunks (Baseline)", "Header-Aware Splitting", "Semantic Topic Splitting"]
     )
     
     st.header("Comparison Mode")
