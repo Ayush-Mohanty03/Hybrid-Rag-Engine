@@ -77,7 +77,7 @@ An enterprise-grade, end-to-end Retrieval-Augmented Generation (RAG) system engi
 - **Cross-Encoder Reranker**: Candidates ($k=20$) pass through `ms-marco-MiniLM-L-12-v2` cross-encoder scoring sentence pair relevance before context assembly ($k=5$).
 
 ### 2. Grounded Generation & Citation Verification
-- **Numbered Context Formatting**: Context passed to `llama-3.1-8b-instant` as explicitly numbered blocks (`[1] Source: lic.pdf | Section: VISION`).
+- **Numbered Context Formatting**: Context passed to `openai/gpt-oss-120b` as explicitly numbered blocks (`[1] Source: lic.pdf | Section: VISION`).
 - **LLM-as-Judge Verifier**: Evaluates every `(claim, chunk)` pair post-generation, tagging citations as `✅ Verified Citation` or `⚠️ Unverified/Not Cited`.
 - **Composite Confidence Score**:
   $$\text{Confidence} = 0.4 \times \text{Retrieval} + 0.3 \times \text{Citation Coverage} + 0.3 \times \text{Completeness}$$
@@ -101,7 +101,7 @@ An enterprise-grade, end-to-end Retrieval-Augmented Generation (RAG) system engi
 - **Orchestration & Chains**: LangChain Classic (`EnsembleRetriever`, `ContextualCompressionRetriever`, `CrossEncoderReranker`)
 - **Vector DB & Retrieval**: ChromaDB, BM25 (`langchain_community.retrievers.BM25Retriever`)
 - **Models**:
-  - LLM: Groq `llama-3.1-8b-instant`
+  - LLM: Groq `openai/gpt-oss-120b` (GPT-OSS-120B)
   - Embeddings: OpenAI `text-embedding-3-small` / HuggingFace `all-MiniLM-L6-v2`
   - Reranker: HuggingFace Cross-Encoder `ms-marco-MiniLM-L-12-v2`
 - **Observability**: LangSmith (`LANGCHAIN_TRACING_V2=true`)

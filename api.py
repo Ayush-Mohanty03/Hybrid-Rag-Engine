@@ -129,7 +129,7 @@ def ask_question(request: AskRequest):
     if vector_store is None:
         raise HTTPException(status_code=400, detail="No vector store found. Please ingest documents first.")
         
-    llm = ChatGroq(model_name="llama-3.1-8b-instant", temperature=0)
+    llm = ChatGroq(model_name="openai/gpt-oss-120b", temperature=0)
     initial_k = 20
     cross_enc = get_cross_encoder()
     
