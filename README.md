@@ -115,7 +115,7 @@ An enterprise-grade, end-to-end Retrieval-Augmented Generation (RAG) system engi
 
 1. **Clone Repository & Create Virtual Environment**:
    ```bash
-   git clone https://github.com/your-username/hybrid-rag-engine.git
+   git clone https://github.com/Ayush-Mohanty03/hybrid-rag-engine.git
    cd hybrid-rag-engine
    python -m venv venv
    source venv/bin/activate  # On Windows: .\venv\Scripts\activate
