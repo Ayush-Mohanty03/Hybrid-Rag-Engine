@@ -1,7 +1,9 @@
 streamlit
 langchain
 langchain-community
+langchain-classic
 langchain-groq
+langchain-openai
 langchain-huggingface
 sentence-transformers
 chromadb
@@ -9,5 +11,7 @@ langchain-chroma
 tiktoken
 pypdf
 python-dotenv
-google-generativeai
 rank-bm25
+numpy
+fastapi
+uvicorn
