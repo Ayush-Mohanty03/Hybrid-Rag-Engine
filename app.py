@@ -399,7 +399,7 @@ def process_documents(chunk_size, chunk_overlap, strategy):
             st.warning("No documents found in storage. Please upload documents first.")
         except Exception:
             pass
-        return None
+        return None, None
         
     chunks = chunk_documents(documents, strategy, chunk_size, chunk_overlap)
     embeddings = get_embeddings()
@@ -407,47 +407,28 @@ def process_documents(chunk_size, chunk_overlap, strategy):
     col_name = f"rag_collection_{dim}"
     persist_directory = os.path.join(os.getcwd(), "chroma_db")
     
-    vector_store = None
+    # Safely clear existing collection to avoid stale vector conflicts
     try:
-        if os.path.exists(persist_directory):
-            vector_store = Chroma(
-                collection_name=col_name,
-                embedding_function=embeddings,
-                persist_directory=persist_directory,
-                collection_metadata={"hnsw:space": "cosine"}
-            )
+        old_vs = Chroma(
+            collection_name=col_name,
+            embedding_function=embeddings,
+            persist_directory=persist_directory
+        )
+        old_vs.delete_collection()
     except Exception:
         pass
 
-    if vector_store is None:
-        vector_store = Chroma(
-            collection_name=col_name,
-            embedding_function=embeddings,
-            persist_directory=persist_directory,
-            collection_metadata={"hnsw:space": "cosine"}
-        )
-
-    unique_chunks = deduplicate_chunks(chunks, vector_store, embeddings)
-    
-    if unique_chunks:
-        try:
-            if vector_store:
-                vector_store.delete_collection()
-        except Exception:
-            pass
-            
-        vector_store = Chroma.from_documents(
-            documents=unique_chunks,
-            embedding=embeddings,
-            persist_directory=persist_directory,
-            collection_name=col_name,
-            collection_metadata={"hnsw:space": "cosine"}
-        )
-        bm25_retriever = BM25Retriever.from_documents(unique_chunks)
-    else:
-        vector_store = None
-        bm25_retriever = None
+    if not chunks:
+        return None, None
         
+    vector_store = Chroma.from_documents(
+        documents=chunks,
+        embedding=embeddings,
+        persist_directory=persist_directory,
+        collection_name=col_name,
+        collection_metadata={"hnsw:space": "cosine"}
+    )
+    bm25_retriever = BM25Retriever.from_documents(chunks)
     return vector_store, bm25_retriever
 
 
@@ -462,6 +443,7 @@ with st.sidebar:
         type=['pdf', 'txt', 'md', 'html', 'htm'], 
         accept_multiple_files=True
     )
+    replace_existing = st.checkbox("Replace existing documents with new upload", value=True)
     
     top_k = st.slider("Select Top-K documents to retrieve", min_value=1, max_value=15, value=5)
     
@@ -493,6 +475,7 @@ with st.sidebar:
                 os.makedirs(RAW_DOCS_DIR, exist_ok=True)
                 st.session_state.vector_store = None
                 st.session_state.bm25_retriever = None
+                st.session_state.messages = []
                 st.success("Storage cleared!")
                 st.rerun()
 
@@ -504,7 +487,21 @@ if "bm25_retriever" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+# Auto-load existing documents on initial app load if vector_store is uninitialized
+if st.session_state.vector_store is None and os.path.exists(RAW_DOCS_DIR) and len(os.listdir(RAW_DOCS_DIR)) > 0:
+    result = process_documents(chunk_size, chunk_overlap, strategy)
+    if result:
+        st.session_state.vector_store, st.session_state.bm25_retriever = result
+
 if process_button and uploaded_files:
+    if replace_existing:
+        if os.path.exists(RAW_DOCS_DIR):
+            for old_f in os.listdir(RAW_DOCS_DIR):
+                old_p = os.path.join(RAW_DOCS_DIR, old_f)
+                if os.path.isfile(old_p):
+                    os.remove(old_p)
+        st.session_state.messages = []
+
     for file in uploaded_files:
         file_path = os.path.join(RAW_DOCS_DIR, file.name)
         with open(file_path, "wb") as f:
